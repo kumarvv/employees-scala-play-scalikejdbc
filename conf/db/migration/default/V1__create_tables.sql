@@ -8,9 +8,9 @@ create table dept (
 insert into dept (name) values ('Features');
 insert into dept (name) values ('Human Resources');
 insert into dept (name) values ('Client Services');
-insert into dept (name) values ('Customer Support');
-insert into dept (name) values ('Management');
-insert into dept (name) values ('Network Operations');
+insert into dept (name) values ('L3 Support');
+insert into dept (name) values ('Network Engineering');
+insert into dept (name) values ('System Operations');
 
 drop table if exists emp;
 create sequence seq_emp_id start with 1;
@@ -20,14 +20,13 @@ create table emp (
   dept_id bigint
 );
 
-insert into emp (name, dept_id) values ('Chris', 1);
-insert into emp (name, dept_id) values ('Andrey', 1);
-insert into emp (name, dept_id) values ('Manish', 1);
-insert into emp (name, dept_id) values ('Luke', 1);
-insert into emp (name, dept_id) values ('Alexey', 3);
-insert into emp (name, dept_id) values ('Basu', 4);
-insert into emp (name, dept_id) values ('Matt H', 4);
-insert into emp (name, dept_id) values ('Scott', 5);
-insert into emp (name, dept_id) values ('Al Sori', 6);
-insert into emp (name, dept_id) values ('Mike', 1);
-insert into emp (name, dept_id) values ('April M', 2);
+insert into emp (name, dept_id) values ('Edward Stark', 1);
+insert into emp (name, dept_id) values ('John Snow', 1);
+insert into emp (name, dept_id) values ('Jamie Lannister', 1);
+insert into emp (name, dept_id) values ('Sansa Stark', 1);
+insert into emp (name, dept_id) values ('Catelyn Stark', 3);
+insert into emp (name, dept_id) values ('Joffrey Baratheon', 5);
+insert into emp (name, dept_id) values ('Tyrion Lannister', 4);
+insert into emp (name, dept_id) values ('Arya Stark', 5);
+insert into emp (name, dept_id) values ('Daenerys Targaryen', 2);
+insert into emp (name, dept_id) values ('Ramsay Bolton', 6);
