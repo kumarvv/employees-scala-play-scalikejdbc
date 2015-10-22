@@ -2,11 +2,12 @@ employees-scala-play-scalikejdbc
 ================================
 
 Simple CRUD application with: 
-- Scala 2.11.x
+- Scala 
 - Play 2.4.x 
-- ScalikeJDBC (ORM)
+- ScalikeJDBC (ORM) (http://scalikejdbc.org/)
 - AngularJS 
-- json4s 
+- json4s (http://json4s.org/)
+- H2 
 
 Usage
 -----
