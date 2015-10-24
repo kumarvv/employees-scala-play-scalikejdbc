@@ -8,12 +8,21 @@ GET           /                    @controllers.Emps.all
 # Map static resources from the /public folder to the /assets URL path
 GET           /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
 
-GET           /dept                @controllers.Depts.all
+GET           /dept                 @controllers.Depts.all
+GET           /dept/:id             @controllers.Depts.find(id: Long)
 POST          /dept                @controllers.Depts.create
 DELETE        /dept/:id            @controllers.Depts.delete(id: Long)
 PUT           /dept/:id            @controllers.Depts.update(id: Long)
+
+GET           /title                 @controllers.Titles.all
+GET           /title/:id             @controllers.Titles.find(id: Long)
+POST          /title                @controllers.Titles.create
+DELETE        /title/:id            @controllers.Titles.delete(id: Long)
+PUT           /title/:id            @controllers.Titles.update(id: Long)
 
 GET           /emp                 @controllers.Emps.all
 POST          /emp                 @controllers.Emps.create
 DELETE        /emp/:id             @controllers.Emps.delete(id: Long)
 PUT           /emp/:id             @controllers.Emps.update(id: Long)
+
+GET           /summary                @controllers.Summarize.all

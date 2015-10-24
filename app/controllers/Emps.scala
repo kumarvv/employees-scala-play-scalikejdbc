@@ -5,31 +5,39 @@ import org.json4s.jackson.Serialization
 import play.api.mvc._
 import play.twirl.api.Html
 
-class Emps extends AppController[Emp] {
+class Emps extends AppController {
 
-  override def dao: DAO[Emp] = Emp
-
-  override val renderList: Option[(String) => Html] = None
-
-  override def all = Action {
-    val emps = Serialization.write(dao.findAll)
+  def all = Action {
+    val emps = Serialization.write(Emp.findAll)
     val depts = Serialization.write(Dept.findAll)
-    Ok(views.html.emp.list.render(emps, depts));
+    val titles = Serialization.write(Title.findAll)
+    Ok(views.html.emp.render(emps, depts, titles));
   }
 
-  override def create = Action(json) { req =>
+  def find(id: Long) = Action {
+    Ok(encodeJson(Emp.find(id)));
+  }
+
+  def create = Action(json) { req =>
     val o = req.body.extract[Emp]
-    val created = Emp.createWithDept(o.name, o.deptId);
+    val created = Emp.create('name -> o.name, 'dept_id -> o.deptId, 'title_id -> o.titleId)
     Ok(encodeJson(created))
   }
 
-  override def update(id: Long) = Action(json) { req =>
+  def update(id: Long) = Action(json) { req =>
     Emp.find(id) match {
-      case Some(e) => {
+      case Some(d) => {
         val o = req.body.extract[Emp]
-        val updated = Emp.save(e.copy(name = o.name, deptId = o.deptId))
+        val updated = Emp.save(id, 'name -> o.name, 'dept_id -> o.deptId, 'title_id -> o.titleId)
         Ok(encodeJson(updated))
       }
+      case _ => NotFound
+    }
+  }
+
+  def delete(id: Long) = Action {
+    Emp.find(id) match {
+      case Some(d) => Emp.remove(id); Ok
       case _ => NotFound
     }
   }

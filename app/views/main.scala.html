@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="container well">
-            <div class="center-block text-center" style="width:350px">
+            <div class="center-block text-center">
                 <div class="btn-group btn-group-lg" role="group" aria-label="...">
                     @if(title == "emp") {
                         <span class="btn btn-primary">Employees</span>
@@ -25,6 +25,16 @@
                         <span class="btn btn-primary">Departments</span>
                     } else {
                         <a href="/dept" class="btn btn-default">Departments</a>
+                    }
+                    @if(title == "title") {
+                        <span class="btn btn-primary">Titles</span>
+                    } else {
+                        <a href="/title" class="btn btn-default">Titles</a>
+                    }
+                    @if(title == "summary") {
+                        <span class="btn btn-primary">Summary</span>
+                    } else {
+                        <a href="/summary" class="btn btn-default">Summary</a>
                     }
                 </div>
             </div>

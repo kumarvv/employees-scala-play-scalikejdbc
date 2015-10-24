@@ -34,6 +34,7 @@ app.controller('appController', ['$scope', '$http', 'focus', function($scope, $h
             $scope.data = _INIT_DATA;
             if (page == "emp") {
                 $scope.depts = _INIT_DATA_DEPTS;
+                $scope.titles = _INIT_DATA_TITLES;
             }
         } else {
             $scope.data = [];

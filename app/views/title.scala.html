@@ -1,0 +1,45 @@
+@(data: String)
+
+@main("title") {
+  <div class="container" ng-controller="appController" ng-init="load('title')">
+    <table id="dept" class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="d in data" ng-class="trStyleClass(d)">
+            <td>
+              <span>{{ d.id }}</span>
+            </td>
+            <td>
+              <span ng-hide="d.editable">{{ d.name }}</span>
+              <span ng-show="d.editable">
+                <input class="form-control" ng-model="d.name" focus-on="name">
+              </span>
+            </td>
+            <td>
+              <span class="btn-group pull-right" ng-hide="d.editable">
+                <button type="button" class="btn btn-default glyphicon glyphicon-pencil" ng-click="edit($index)"></button>
+                <button type="button" class="btn btn-danger glyphicon glyphicon-remove" ng-click="delete($index)"></button>
+              </span>
+              <span class="btn-group pull-right" ng-show="d.editable">
+                <button type="button" class="btn btn-success glyphicon glyphicon-ok" ng-click="save($index)"></button>
+                <button type="button" class="btn btn-default glyphicon glyphicon-remove" ng-click="delete($index)"></button>
+              </span>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="center-block text-center">
+        <button type="button" class="btn btn-info box-shadow--4dp">Refresh</button>
+        <button type="button" class="btn btn-success box-shadow--4dp" ng-click="add()">Add Department</button>
+      </div>
+    </div>
+  </div>
+}
+
+<script lang="text/javascript">var _INIT_DATA = JSON.parse('@{Html(data)}');</script>

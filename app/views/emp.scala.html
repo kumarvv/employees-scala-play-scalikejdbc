@@ -1,4 +1,4 @@
-@(data: String, depts: String)
+@(data: String, depts: String, titles: String)
 
 @main("emp") {
   <div class="container" ng-controller="appController" ng-init="load('emp')">
@@ -8,24 +8,34 @@
           <th>ID</th>
           <th>Name</th>
           <th>Department</th>
+          <th>Title</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="d in data" ng-class="trStyleClass(d)">
           <td>
-            <span>{{ d.id }}</span>
+            <span ng-bind="d.id"></span>
           </td>
           <td>
-            <span ng-hide="d.editable">{{ d.name }}</span>
+            <span ng-hide="d.editable" ng-bind="d.name"></span>
             <span ng-show="d.editable">
               <input class="form-control" ng-model="d.name" focus-on="name">
             </span>
           </td>
           <td>
-            <span ng-hide="d.editable">{{ d.dept.name }}</span>
+            <span ng-hide="d.editable" ng-bind="d.dept.name"></span>
             <span ng-show="d.editable">
               <select class="form-control" ng-model="d.deptId" ng-options="l.id as l.name for l in depts"></select>
             </span>
+          </td>
+          <td>
+            <span ng-hide="d.editable" ng-bind="d.title.name"></span>
+            <span ng-show="d.editable">
+              <select class="form-control" ng-model="d.titleId" ng-options="t.id as t.name for t in titles">
+                <option></option>
+              </select>
+            </span>
+          <td>
           <td>
             <span class="btn-group pull-right" ng-hide="d.editable">
               <button type="button" class="btn btn-default glyphicon glyphicon-pencil" ng-click="edit($index)"></button>
@@ -50,3 +60,4 @@
 
 <script lang="text/javascript">var _INIT_DATA = JSON.parse('@{Html(data)}');</script>
 <script lang="text/javascript">var _INIT_DATA_DEPTS = JSON.parse('@{Html(depts)}');</script>
+<script lang="text/javascript">var _INIT_DATA_TITLES = JSON.parse('@{Html(titles)}');</script>

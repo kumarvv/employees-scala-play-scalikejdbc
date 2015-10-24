@@ -1,0 +1,50 @@
+@(data: String)
+
+@main("summary") {
+    <div class="container" ng-controller="appController" ng-init="load('summary')">
+        <div class="jumbotron">
+            <h4 class="row">
+                <span class="col-xs-5">Total Employees</span>
+                <span class="col-xs-5" ng-bind="data.emps"></span>
+            </h4>
+            <h4 class="row">
+                <span class="col-xs-5">Total Departments</span>
+                <span class="col-xs-5" ng-bind="data.depts"></span>
+            </h4>
+            <h4 class="row">
+                <span class="col-xs-5">Total Titles</span>
+                <span class="col-xs-5" ng-bind="data.titles"></span>
+            </h4>
+            <br>
+            <h4 class="row">
+                <span class="col-xs-5">Employees Without Department</span>
+                <span class="col-xs-5" ng-bind="data.empsWithoutDept"></span>
+            </h4>
+            <h4 class="row">
+                <span class="col-xs-5">Employees Without Title</span>
+                <span class="col-xs-5" ng-bind="data.empsWithoutTitle"></span>
+            </h4>
+            <h4 class="row">
+                <span class="col-xs-5">Employees Without Department & Title</span>
+                <span class="col-xs-5" ng-bind="data.empsWithoutDeptTitle"></span>
+            </h4>
+            <br>
+            <h4 class="row">
+                <span class="col-xs-5">Departments Without Employees</span>
+                <span class="col-xs-5" ng-bind="data.deptWithoutEmps"></span>
+            </h4>
+            <br>
+            <h4 class="row">
+                <span class="col-xs-5">Titles Without Employees</span>
+                <span class="col-xs-5" ng-bind="data.titleWithoutEmps"></span>
+            </h4>
+        </div>
+        <div class="row">
+            <div class="center-block text-center">
+                <button type="button" class="btn btn-info box-shadow--4dp">Refresh</button>
+            </div>
+        </div>
+    </div>
+}
+
+<script lang="text/javascript">var _INIT_DATA = JSON.parse('@{Html(data)}');</script>

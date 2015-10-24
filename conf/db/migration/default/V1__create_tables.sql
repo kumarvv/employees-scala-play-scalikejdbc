@@ -17,7 +17,8 @@ create sequence seq_emp_id start with 1;
 create table emp (
   id bigint not null default nextval('seq_emp_id') primary key,
   name varchar(255) not null,
-  dept_id bigint
+  dept_id bigint,
+  title_id bigint
 );
 
 insert into emp (name, dept_id) values ('Edward Stark', 1);
@@ -30,3 +31,16 @@ insert into emp (name, dept_id) values ('Tyrion Lannister', 4);
 insert into emp (name, dept_id) values ('Arya Stark', 5);
 insert into emp (name, dept_id) values ('Daenerys Targaryen', 2);
 insert into emp (name, dept_id) values ('Ramsay Bolton', 6);
+
+create sequence seq_title_id start with 1;
+create table title (
+  id bigint not null default nextval('seq_title_id') primary key,
+  name varchar(255) not null
+);
+
+insert into title (name) values ('Software Engineer');
+insert into title (name) values ('Director');
+insert into title (name) values ('CEO');
+insert into title (name) values ('Vice Precident');
+insert into title (name) values ('Business Analyst');
+insert into title (name) values ('Product Manager');
